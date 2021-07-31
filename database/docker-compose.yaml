@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  database:
+    image: mysql:latest
+    container_name: database
+    ports:
+      - 3306:3306
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./init.sql:/data/application/init.sql
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: backend
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: pass
+volumes:
+  db_data:
