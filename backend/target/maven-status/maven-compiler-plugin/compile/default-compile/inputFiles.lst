@@ -1,0 +1,9 @@
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/enums/ErrorCode.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/services/BookService.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/controllers/BookController.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/LibraryBackendApplication.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/helpers/JSONBuilder.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/models/Book.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/helpers/ResponseBuilder.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/configuration/SwaggerConfig.java
+/home/kushiji/Desktop/library-webapp/backend/src/main/java/com/example/librarybackend/repositories/BookRepository.java

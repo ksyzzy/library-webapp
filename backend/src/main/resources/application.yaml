@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: library-backend
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MySQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/backend
+    username: dev
+    password: pass
