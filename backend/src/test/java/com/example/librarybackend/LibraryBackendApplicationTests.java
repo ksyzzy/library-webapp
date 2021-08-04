@@ -2,14 +2,12 @@ package com.example.librarybackend;
 
 import com.example.librarybackend.models.Book;
 import com.example.librarybackend.repositories.BookRepository;
-import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 
-import javax.persistence.EntityNotFoundException;
+
 import javax.transaction.Transactional;
 
 import java.util.List;
@@ -45,7 +43,7 @@ class LibraryBackendApplicationTests {
 
 	@Test
 	@Transactional
-	public void givenNoSuchEntity_whenDeleteEntity_thenExceptionThrows() {
+	public void givenNoSuchEntity_whenDeleteEntity_thenExceptionThrown() {
 		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "111111111111"));
 		Book foundBook = bookRepository.getById(newBook.getId());
 
@@ -54,4 +52,10 @@ class LibraryBackendApplicationTests {
 		assertThrows(JpaObjectRetrievalFailureException.class, () -> bookRepository.getById(foundBook.getId()));
 	}
 
+	@Test
+	@Transactional
+	public void givenNotValidEAN_whenAddToDatabase_thenExceptionThrown() {
+		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "ABC"));
+		bookRepository.save(newBook);
+	}
 }

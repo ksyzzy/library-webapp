@@ -16,7 +16,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.librarybackend.controllers"))
                 .paths(PathSelectors.any())

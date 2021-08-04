@@ -31,6 +31,12 @@ public class ResponseBuilder {
                 .body(jsonBuilder.buildJSON(errorCode));
     }
 
+    public ResponseEntity<String> build(String value, HttpStatus httpStatus) {
+        return ResponseEntity
+                .status(httpStatus)
+                .body(jsonBuilder.buildJSON(value));
+    }
+
     public JSONBuilder getJsonBuilder() {
         return jsonBuilder;
     }

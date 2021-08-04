@@ -11,6 +11,6 @@ spring:
       ddl-auto: update
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/backend
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/backend?useUnicode=yes&characterEncoding=UTF-8
     username: dev
     password: pass
