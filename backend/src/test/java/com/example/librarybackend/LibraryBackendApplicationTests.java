@@ -9,6 +9,8 @@ import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import java.util.List;
 
@@ -36,7 +38,6 @@ class LibraryBackendApplicationTests {
 	public void givenBookRepository_whenSaveAndRetrieveEntity_thenOK() {
 		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "111111111111"));
 		Book foundBook = bookRepository.getById(newBook.getId());
-
 		assertNotNull(foundBook);
 		assertEquals(newBook, foundBook);
 	}
@@ -44,9 +45,8 @@ class LibraryBackendApplicationTests {
 	@Test
 	@Transactional
 	public void givenNoSuchEntity_whenDeleteEntity_thenExceptionThrown() {
-		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "111111111111"));
+		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "1111111111111"));
 		Book foundBook = bookRepository.getById(newBook.getId());
-
 		assertTrue(bookRepository.existsById(foundBook.getId()));
 		bookRepository.deleteById(foundBook.getId());
 		assertThrows(JpaObjectRetrievalFailureException.class, () -> bookRepository.getById(foundBook.getId()));
@@ -55,7 +55,17 @@ class LibraryBackendApplicationTests {
 	@Test
 	@Transactional
 	public void givenNotValidEAN_whenAddToDatabase_thenExceptionThrown() {
-		Book newBook = bookRepository.save(new Book(1, "author", "title", 35, "description", "ABC"));
-		bookRepository.save(newBook);
+		Book newBook = bookRepository.save(new Book(2, "author", "title", 35, "description", "A1111111111"));
+		assertThrows(ConstraintViolationException.class, () ->  bookRepository.existsById(newBook.getId()));
+	}
+
+	@Test
+	@Transactional
+	public void givenExistingEntity_whenUpdateEntity_thenOK() {
+		Book book = bookRepository.save(new Book(1, "author", "title", 35, "description", "1111111111111"));
+		book.setTitle("newTitle");
+		bookRepository.updateBook(book.getId(), book.getAuthor(), book.getTitle(), book.getDescription(), book.getEan(), book.getPrice());
+		Book newBook = bookRepository.getById(book.getId());
+		assertEquals(book.getTitle(), newBook.getTitle());
 	}
 }

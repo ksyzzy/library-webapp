@@ -1,0 +1,42 @@
+version: "3.5"
+
+services:
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    image: backend:latest
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      spring.datasource.url: "jdbc:mysql://db:3306/backend?useUnicode=yes&characterEncoding=UTF-8"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    links:
+      - backend
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:latest
+    container_name: db
+    ports: 
+      - 3306:3306
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/config.cnf:/etc/mysql/conf.d/config.cnf
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+
+volumes:
+  db_data:
+  backend_data:
