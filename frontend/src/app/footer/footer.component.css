@@ -1,0 +1,28 @@
+footer {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: linear-gradient(
+    45deg,
+    #9b8e66 0% 10%,
+    #c2b280 10% 90%,
+    #9b8e66 90% 100%
+  );
+  left: 0;
+  bottom: 0;
+  outline: 1px solid black;
+}
+
+p {
+  padding-top: 0.25em;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  bottom: 0;
+  text-shadow: 1px 1px 1px black;
+}
+
+span {
+  text-shadow: none;
+}

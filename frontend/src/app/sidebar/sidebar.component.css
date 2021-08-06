@@ -1,0 +1,26 @@
+nav {
+  background-color: #c2b280;
+  height: 100%;
+  outline: 1px solid black;
+  text-align: center;
+}
+
+ol {
+  list-style-type: none;
+}
+
+.nav-link {
+  position: relative;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 3em;
+  line-height: 1.5em;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: goldenrod;
+  text-decoration: underline;
+}

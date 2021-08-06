@@ -1,1 +1,25 @@
-<p>content works!</p>
+<table *ngIf="books.length; else noData">
+  <thead>
+    <tr>
+      <td>Id:</td>
+      <td>Author:</td>
+      <td>Title:</td>
+      <td>EAN:</td>
+      <td>Details:</td>
+    </tr>
+  </thead>
+
+  <ng-container *ngFor="let book of books">
+    <tbody>
+      <tr id="{{ book.id }}">
+        <td>{{ book.id }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.ean }}</td>
+        <td><a [routerLink]="['/books', book.id]">details</a></td>
+      </tr>
+    </tbody>
+  </ng-container>
+</table>
+
+<ng-template #noData><p class="loading">No data available</p></ng-template>

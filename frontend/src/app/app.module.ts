@@ -9,6 +9,10 @@ import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './details/details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     SidebarComponent,
     ContentComponent,
     PageNotFoundComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    AddBookComponent,
+    DetailsComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule
-  ],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

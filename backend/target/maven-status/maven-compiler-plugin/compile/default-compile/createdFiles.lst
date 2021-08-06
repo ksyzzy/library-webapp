@@ -1,0 +1,13 @@
+com/example/librarybackend/helpers/JSONBuilder.class
+com/example/librarybackend/helpers/ResponseBuilder.class
+com/example/librarybackend/configuration/SwaggerConfig.class
+com/example/librarybackend/validators/ValidEANValidator.class
+com/example/librarybackend/services/BookService.class
+com/example/librarybackend/repositories/BookRepository.class
+com/example/librarybackend/configuration/CorsConfig$1.class
+com/example/librarybackend/configuration/CorsConfig.class
+com/example/librarybackend/controllers/BookController.class
+com/example/librarybackend/validators/ValidEAN.class
+com/example/librarybackend/enums/ErrorCode.class
+com/example/librarybackend/models/Book.class
+com/example/librarybackend/LibraryBackendApplication.class

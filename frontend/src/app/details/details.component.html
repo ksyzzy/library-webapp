@@ -1,0 +1,66 @@
+<table *ngIf="book$ | async as book; else noData">
+  <tr>
+    <th>Id:</th>
+    <td>{{ book.id }}</td>
+  </tr>
+  <tr>
+    <th>Author:</th>
+    <td>
+      <input
+        type="text"
+        [ngModel]="book.author"
+        (ngModelChange)="updateAuthor($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <th>Title:</th>
+    <td>
+      <input
+        type="text"
+        [ngModel]="book.title"
+        (ngModelChange)="updateTitle($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <th>Description:</th>
+    <td>
+      <input
+        type="text"
+        [ngModel]="book.description"
+        (ngModelChange)="updateDescription($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <th>Price:</th>
+    <td>
+      <input
+        type="number"
+        [ngModel]="book.price"
+        (ngModelChange)="updatePrice($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <th>EAN:</th>
+    <td>
+      <input
+        type="number"
+        [ngModel]="book.ean"
+        (ngModelChange)="updateEAN($event)"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div class="button-wrapper">
+        <button class="update-button" (click)="updateBook()">Update</button>
+        <button class="delete-button" (click)="deleteBook()">Delete</button>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<ng-template #noData><p class="loading">loading...</p></ng-template>

@@ -110,7 +110,7 @@ public class BookController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 404, message = "Not Found")
     })
-    @DeleteMapping(value = "/books/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/books/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> deleteBookById(@ApiParam(
             name = "id",
             type = "long",
@@ -120,7 +120,7 @@ public class BookController {
         try {
             if (bookService.checkIfExistsById(id)) {
                 return bookService.deleteBookById(id) ?
-                        responseBuilder.build("User deleted successfully", HttpStatus.OK)
+                        responseBuilder.build("Book deleted successfully", HttpStatus.OK)
                         : responseBuilder.build(ErrorCode.ENTITY_DOES_NOT_EXIST, HttpStatus.NOT_FOUND);
             } else {
                 throw new NoSuchElementException();
